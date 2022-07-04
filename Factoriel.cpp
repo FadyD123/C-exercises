@@ -6,28 +6,40 @@ using namespace std;
 int factioriel(int n)
 {
     int i;
-    if(n==0)
+    int fact = 1;
+    if (n == 0)
     {
-        return 1;
+        return fact;
     }
     else
     {
-        int j=1;
-        int fact = 1;
-        for(j=1;j<=n;j++)
+        int j = 1;
+        for (j = 1; j <= n; j++)
         {
             fact = fact * j;
         }
         return fact;
     }
+
+}
+
+double combinaison(int n, int p)
+{
+    int factn = factioriel(n);
+    int factp = factioriel(p);
+    int fact_n_moins_p = factioriel(n - p);
+    double c = factn / (factp * fact_n_moins_p);
+    return c;
 }
 
 int main()
 {
-    cout << "enter a number : ";
+    cout << "n : ";
     int n;
     cin >> n;
-    int m = factioriel(n);
-    cout << m;
+    cout << "p : ";
+    int p;
+    cin >> p;
+    cout << "nCp = " << combinaison(n, p) << endl;
     return 0;
 }
